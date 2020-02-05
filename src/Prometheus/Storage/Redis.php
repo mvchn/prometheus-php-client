@@ -269,11 +269,13 @@ LUA
                 );
 
                 // Add the sum
+                $sumIndex = json_encode(array('b' => 'sum', 'labelValues' => $labelValues));
+                $sumValue = isset($raw[$sumIndex]) ? $raw[$sumIndex] : 0;
                 $histogram['samples'][] = array(
                     'name' => $histogram['name'] . '_sum',
                     'labelNames' => array(),
                     'labelValues' => $labelValues,
-                    'value' => $raw[json_encode(array('b' => 'sum', 'labelValues' => $labelValues))]
+                    'value' => $sumValue
                 );
             }
             $histograms[] = $histogram;
